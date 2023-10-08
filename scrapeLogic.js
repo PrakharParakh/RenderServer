@@ -19,12 +19,6 @@ const scrapeLogic = async (res) => {
     const page = await browser.newPage()
 
     await page.goto('https://www.goal.com/en-in')
-
-    await delay(2000);
-
-    await page.screenshot({path : 'exm.png'})
-    // const html = await page.content();
-
     await page.evaluate(() => {
         const unwantedSection = document.querySelector('[card-group-type="TOP_VIDEOS"]');
         if (unwantedSection) {
