@@ -18,7 +18,11 @@ const scrapeLogic = async (res) => {
     var sendingObject = [];
     const page = await browser.newPage()
 
-    await page.goto('https://www.goal.com/en-in')
+    await page.goto('https://www.goal.com/en-in', {
+      waitUntil: "networkidle2",
+      timeout: 60000
+    });
+    
     await page.evaluate(() => {
         const unwantedSection = document.querySelector('[card-group-type="TOP_VIDEOS"]');
         if (unwantedSection) {
